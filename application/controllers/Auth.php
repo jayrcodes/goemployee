@@ -81,7 +81,7 @@ class Auth extends CI_Controller {
                 $user_data['logged_in']     = 'logged_in';
 
                 $this->session->set_userdata($user_data);
-                redirect(base_url());
+                redirect(base_url() . 'admin');
             } else {
                 $data['status'] = 'login_fail';
                 $this->load->view('auth/login', $data);
@@ -96,10 +96,3 @@ class Auth extends CI_Controller {
     }
 
 }
-
-/*
-    $users = $this->user->get_all();
-
-    header('Content-Type: application/json');
-    echo json_encode($users);
- */

@@ -57,12 +57,15 @@ $route['translate_uri_dashes']  = FALSE;
 # ASSETS
 $route['assets/(:any)'] = 'assets/$1';
 
-# AUTH 
+# AUTH
 $route['login']['get']          = 'auth/index';
 $route['login']['post']         = 'auth/validate_login';
 $route['logout']['get']         = 'auth/do_logout';
 $route['register']['get']       = 'auth/register';
 $route['register']['post']      = 'users/add';
 
-# END OF routes.php
+# ADMIN
+$route['admin']['get']          = 'admin/index';
+$route['employees']['get']      = 'employees/index';
 
+# END OF routes.php

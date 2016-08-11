@@ -46,7 +46,7 @@
             <?php } ?>
             <?php } ?>
 
-            <h2 class="form-signin-heading">Please sign in</h2>
+            <h4 class="form-signin-heading"><?= LOGIN_PAGE_TITLE ?></h4>
             <label for="inputEmail" class="sr-only">Email address</label>
             <input type="username" name="username" id="username" class="form-control" placeholder="Username" required="" autofocus="">
             <label for="inputPassword" class="sr-only">Password</label>
