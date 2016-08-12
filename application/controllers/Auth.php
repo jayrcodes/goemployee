@@ -56,8 +56,8 @@ class Auth extends CI_Controller {
         $this->form_validation->set_rules('username', 'Username', 'trim|required|xss_clean');
         $this->form_validation->set_rules('password', 'Password', 'trim|required|md5');
 
-        $username = $this->input->post('username');
-        $password = password_hash(
+        $username = htmlspecialchars($this->input->post('username'));
+            $password = password_hash(
             $this->input->post('password'),
             PASSWORD_BCRYPT,
             array('salt' => 'UycSAbzwYLMsah7Rj2yvzH2TcRRaYZnyCysT7AdD')
@@ -81,7 +81,7 @@ class Auth extends CI_Controller {
                 $user_data['logged_in']     = 'logged_in';
 
                 $this->session->set_userdata($user_data);
-                redirect(base_url() . 'admin');
+                redirect(base_url());
             } else {
                 $data['status'] = 'login_fail';
                 $this->load->view('auth/login', $data);

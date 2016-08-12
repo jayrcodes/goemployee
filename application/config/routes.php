@@ -50,7 +50,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 |		my-controller/my-method	-> my_controller/my_method
 */
 
-$route['default_controller']    = 'home';
+$route['default_controller']    = 'admin';
 $route['404_override']          = '';
 $route['translate_uri_dashes']  = FALSE;
 
@@ -64,8 +64,11 @@ $route['logout']['get']         = 'auth/do_logout';
 $route['register']['get']       = 'auth/register';
 $route['register']['post']      = 'users/add';
 
-# ADMIN
-$route['admin']['get']          = 'admin/index';
-$route['employees']['get']      = 'employees/index';
+# EMPLOYEE
+$route['employees']['get']          = 'employees/index';
+$route['employees']['post']         = 'employees/add';
+$route['employee/update']['post']   = 'employees/update';
+$route['employee/edit']['get']      = 'employees/edit_view';
+$route['employee/delete']['get']    = 'employees/delete';
 
 # END OF routes.php

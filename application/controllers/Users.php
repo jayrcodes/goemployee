@@ -37,16 +37,4 @@ class Users extends CI_Controller {
         }
     }
 
-    public function edit($user_id)
-    {
-    }
-
-    public function view($user_id)
-    {
-    }
-
-    public function delete($user_id)
-    {
-    }
-
 }

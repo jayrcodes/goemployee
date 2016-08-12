@@ -14,7 +14,8 @@ class Admin extends CI_Controller {
     public function index()
     {
         $this->verify_auth();
-        $this->load->view('admin/admin');
+        // $this->load->view('admin/employees');
+        redirect(base_url() . 'employees');
     }
 
     public function verify_auth()
