@@ -4,6 +4,8 @@ A Simple Employee Management System developed using CodeIgniter 3.1.0
 ## Install Database (SQL dump file)
 The SQL dump file is located at `dist` folder.
 
+## Configure your `application/config/database.php`
+
 ## Test run
 `php -S localhost:3000`
 
