@@ -113,7 +113,11 @@
                         <!-- /.panel-heading -->
                         <div class="panel-body">
 
-                            <a href="<?= base_url(); ?>/export/excel" class="btn btn-success">Excel</a>
+                            <p>Download: </p>
+                            <div class="export-buttons">
+                                <a href="<?= base_url(); ?>/export/excel" class="btn btn-success">Excel</a>
+                                <a href="<?= base_url(); ?>/export/excel" class="btn btn-success">Excel</a>
+                            </div>
                 
                             <?php if (isset($status)) { ?>
                             <?php if ($status == 'success_update') { ?>
