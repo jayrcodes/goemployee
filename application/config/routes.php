@@ -71,4 +71,7 @@ $route['employee/update']['post']   = 'employees/update';
 $route['employee/edit']['get']      = 'employees/edit_view';
 $route['employee/delete']['get']    = 'employees/delete';
 
+# REPORT
+$route['export/excel']['get']       = 'report/generate_excel';
+
 # END OF routes.php

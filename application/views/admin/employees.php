@@ -75,7 +75,7 @@
                                     <div class="col-lg-4">
                                         <div class="form-group">
                                             <label>Birth date</label>
-                                            <input type="date" data-provide="datepicker" class="form-control" name="birthdate" placeholder="Birth date">
+                                            <input type="text" data-provide="datepicker" class="form-control" name="birthdate" placeholder="Birth date">
                                         </div>
                                     </div>
                                     <div class="col-lg-4">
@@ -113,6 +113,8 @@
                         <!-- /.panel-heading -->
                         <div class="panel-body">
 
+                            <a href="<?= base_url(); ?>/export/excel" class="btn btn-success">Excel</a>
+                
                             <?php if (isset($status)) { ?>
                             <?php if ($status == 'success_update') { ?>
                             <div class="alert alert-success" role="alert">
@@ -193,7 +195,7 @@
 
         <script type="text/javascript">
             $('.datepicker').datepicker({
-                format: 'mm/dd/yyyy',
+                dateFormat: 'mm/dd/yyyy',
               //  format: 'yyyy-MM-dd',
             });
         </script>
