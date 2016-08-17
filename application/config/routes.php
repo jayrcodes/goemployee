@@ -73,5 +73,7 @@ $route['employee/delete']['get']    = 'employees/delete';
 
 # REPORT
 $route['export/excel']['get']       = 'report/generate_excel';
+$route['export/pdf']['get']         = 'report/generate_pdf';
+$route['export/table']['get']       = 'report/table';
 
 # END OF routes.php

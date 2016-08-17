@@ -115,8 +115,8 @@
 
                             <p>Download: </p>
                             <div class="export-buttons">
-                                <a href="<?= base_url(); ?>/export/excel" class="btn btn-success">Excel</a>
-                                <a href="<?= base_url(); ?>/export/excel" class="btn btn-success">Excel</a>
+                                <a href="<?= base_url(); ?>export/excel" class="btn btn-success">Excel</a>
+                                <a href="<?= base_url(); ?>export/pdf" class="btn btn-danger">PDF</a>
                             </div>
                 
                             <?php if (isset($status)) { ?>
