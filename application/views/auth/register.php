@@ -35,7 +35,7 @@
 
     <div class="container">
 
-        <form class="form-signin" action="/register" method="post" novalidate>
+        <form class="form-signin" action="<?= base_url(); ?>register" method="post" novalidate>
             <h2 class="form-signin-heading">Registration</h2>
             <label for="username" class="sr-only">Email address</label>
             <input type="username" name="username" id="username" class="form-control" placeholder="Username" required="" autofocus="">

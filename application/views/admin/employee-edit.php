@@ -27,7 +27,7 @@
                             Edit Employee Details
                         </div>
                         <div class="panel-body">
-                            <form role="form" action="/employee/update" method="post" novalidate>
+                        <form role="form" action="<?= base_url(); ?>employee/update" method="post" novalidate>
 
                             <?php if (isset($status)) { ?>
                             <?php if ($status == 'success') { ?>

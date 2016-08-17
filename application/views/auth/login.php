@@ -35,7 +35,7 @@
 
     <div class="container">
 
-        <form class="form-signin" action="/login" method="post" novalidate>
+        <form class="form-signin" action="<?= base_url() ?>login" method="post" novalidate>
             <?php if (isset($status)) { ?>
             <?php if ($status == 'login_fail') { ?>
             <div class="alert alert-danger" role="alert">

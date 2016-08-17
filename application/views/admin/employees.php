@@ -33,7 +33,7 @@
                             New Employee
                         </div>
                         <div class="panel-body">
-                            <form role="form" action="/employees" method="post" novalidate>
+                        <form role="form" action="<?= base_url(); ?>employees" method="post" novalidate>
 
                             <?php if (isset($status)) { ?>
                             <?php if ($status == 'success') { ?>
@@ -194,6 +194,7 @@
         <script type="text/javascript">
             $('.datepicker').datepicker({
                 format: 'mm/dd/yyyy',
+              //  format: 'yyyy-MM-dd',
             });
         </script>
 
