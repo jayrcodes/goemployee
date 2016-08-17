@@ -1,7 +1,9 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Employees extends CI_Controller {
+require_once APPPATH . "/controllers/Base_Controller.php";
+
+class Employees extends Base_Controller {
 
     public function __construct()
     {
@@ -9,9 +11,7 @@ class Employees extends CI_Controller {
         $this->load->model('employee_model');
         $this->load->helper('form');
         $this->load->helper('url');
-        $this->load->library('session');
         $this->load->library('form_validation');
-        $this->verify_auth();
     }
 
     public function index()
@@ -19,6 +19,10 @@ class Employees extends CI_Controller {
         $employees = $this->employee_model->get_list();
         $data['employees'] = $employees;
         $this->load->view('admin/employees', $data);
+    }
+
+    public function test() {
+        echo 'test';
     }
 
     public function add()
@@ -103,15 +107,6 @@ class Employees extends CI_Controller {
             $this->load->view('admin/employee-edit', $data);
         } else {
             redirect(base_url() . 'employees');
-        }
-    }
-
-    public function verify_auth()
-    {
-        $user_auth = $this->session->userdata['logged_in'];
-        if (!isset($user_auth))
-        {
-            redirect(base_url() . 'login');
         }
     }
 

@@ -13,7 +13,12 @@ class Auth extends CI_Controller {
         $this->load->library('session');
     }
 
-    public function index()
+    public function index() 
+    {
+        redirect(base_url() . 'employees');
+    }
+
+    public function login()
     {
         $this->verify_auth();
         $this->load->view('auth/login');
@@ -81,7 +86,7 @@ class Auth extends CI_Controller {
                 $user_data['logged_in']     = 'logged_in';
 
                 $this->session->set_userdata($user_data);
-                redirect(base_url());
+                redirect(base_url() . 'employees');
             } else {
                 $data['status'] = 'login_fail';
                 $this->load->view('auth/login', $data);

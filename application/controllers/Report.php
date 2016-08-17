@@ -1,13 +1,14 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Report extends CI_Controller {
+require_once APPPATH . "/controllers/Base_Controller.php";
+
+class Report extends Base_Controller {
 
     public function __construct()
     {
         parent::__construct();
         $this->load->model('employee_model');
-        $this->load->library('session');
         $this->load->library('excel');
         $this->load->library('pdf');
     }
@@ -18,14 +19,14 @@ class Report extends CI_Controller {
         redirect(base_url() . 'employees');
     }
 
-    public function generate_excel() 
+    public function generate_excel()
     {
         $employees = $this->employee_model->get_list();
         $excel_title = 'Employee List';
         $file_name = 'EMPLOYEE_LIST.xls';
         $creator = 'Pastor Albano Jr.';
         $description = 'The employee list';
-    
+
         # Initialize Excel
         $this->excel->getProperties()->setCreator($creator);
         $this->excel->getProperties()->setLastModifiedBy($creator);
@@ -35,7 +36,7 @@ class Report extends CI_Controller {
 
         $sheet = $this->excel->getActiveSheet();
 
-        # Set Column Names 
+        # Set Column Names
         $this->excel->createSheet(1);
         $this->excel->getActiveSheet()->SetCellValue('A1', 'ID');
         $this->excel->getActiveSheet()->SetCellValue('B1', 'First Name');
@@ -75,6 +76,7 @@ class Report extends CI_Controller {
         $pdf_author = 'Pastor Albano Jr';
         $file_name = 'Employee_List.pdf';
 
+        # Init PDF
         $pdf = new Pdf('P', 'mm', 'A4', true, 'UTF-8', false);
         $pdf->SetTitle($pdf_title);
         $pdf->SetHeaderMargin(30);
@@ -84,18 +86,38 @@ class Report extends CI_Controller {
         $pdf->SetAuthor($pdf_author);
         $pdf->SetDisplayMode('real', 'default');
 
+        # New Page
         $pdf->AddPage();
 
+        # Total Cell Width
         $total_width = 190;
         $column_count = 7;
 
-        $w = $total_width / $column_count; 
-        $h = 7;
-
-        $pdf->Cell(0, 0, $pdf_title, 1, 1, 'C', 0, '', 0);
+        $pdf->Cell(0, 0, $pdf_title, 0, 1, 'C', 0, '', 0);
         $pdf->Ln();
 
-        $pdf->Cell($w, $h, 'ID', 1, 0, 'C', 0);
+        $w = $total_width / $column_count; # cell width
+        $h = 7; # cell height
+        $text = 'ID';
+        $border_line = 1; # 1 or 0
+        $single_line = 0; # 1 or 0
+        # Text Align | L, C, R
+        $text_align = 'C';
+        $fill = 1; # 1 or 0
+
+        # Fill Color, rgb(), if $fill = 1
+        $pdf->SetFillColor(255, 255, 0);
+        # Text Color, rgb()
+        $pdf->SetTextColor(0, 0, 0);
+        # Line color
+        $pdf->SetDrawColor(153, 255, 102);
+        # Line Thickness
+        $pdf->SetLineWidth(0.3);
+        # Font name, Font weight (B, BI, I)
+        $pdf->SetFont('helvetica', 'B');
+
+        # Table Header
+        $pdf->Cell($w, $h, $text, $border_line, $single_line, $text_align, $fill);
         $pdf->Cell($w, $h, 'First Name', 1, 0, 'C', 0);
         $pdf->Cell($w, $h, 'Middle Name', 1, 0, 'C', 0);
         $pdf->Cell($w, $h, 'Last Name', 1, 0, 'C', 0);
@@ -116,12 +138,6 @@ class Report extends CI_Controller {
         }
 
         $pdf->Output($file_name, 'I');
-    }
-
-    public function table() {
-        $employees = $this->employee_model->get_list();
-        $data['employees'] = $employees;
-        $this->load->view('admin/table', $data);
     }
 
     public function verify_auth()
